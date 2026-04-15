@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { BsBag } from "react-icons/bs";
 import { BsTags } from "react-icons/bs";
-import { BsCart2 } from "react-icons/bs";
+// import { BsCart2 } from "react-icons/bs";
 import Button from 'react-bootstrap/Button';
 export default function Header(){
     return(

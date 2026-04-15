@@ -8,7 +8,7 @@ export default function Header(){
     return(
         <Navbar variant="dark" style={{backgroundColor:"#2a9d8f"}}>
         <Container>
-          <Navbar.Brand className="btn btn-outline-light" href="#home">Joab Kids</Navbar.Brand>
+          <Navbar.Brand className="btn btn-outline-light" href="#JoabKidsHome">Joab Kids</Navbar.Brand>
           <Nav className="me-auto">
             <Button className="me-2" variant="outline-light" href="#paginainicial"><BsBag/>Página Inicial</Button>
             <Button variant="outline-light" href="#produtos"><BsTags/>Produtos</Button>

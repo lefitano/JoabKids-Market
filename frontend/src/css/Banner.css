@@ -1,3 +1,24 @@
+.banner-titulo {
+    text-align: center;
+    padding: 40px 20px 25px 20px;
+    background: linear-gradient(180deg, #f0f7f7 0%, #ffffff 100%);
+    border-bottom: 3px solid #003235;
+}
+
+.banner-titulo h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #003235;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.banner-titulo p {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 8px;
+    font-style: italic;
+}
 .btn-loja-carrossel{
     border-color: #003235 !important;
     color: #003235 !important;
@@ -7,6 +28,40 @@
 .btn-loja-carrossel:hover{
     background-color: #003235 !important;
     color: white !important;
+}
+
+.carrossel-container{
+    max-width: fit-content;
+    margin: 0 auto;
+    margin-top: 1px;
+    
+}
+.img-carrossel{
+    height: 600px;
+    object-fit: contain;
+    object-position: top;
+    
+}
+/* .legenda-carrossel {
+    background-color: rgba(0, 50, 52, 0.6); 
+    border-radius: 8px;
+    padding: 5px 15px;
+    width: fit-content;
+    margin: 0 auto;
+    margin-bottom: 15px;
+} */
+.legenda-carrossel {
+    color: #003235;
+}
+.categoria-titulo {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #003235;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* o !important é para forçar o css a ter prioridade sobre o bootstrap */

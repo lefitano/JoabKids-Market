@@ -1,0 +1,14 @@
+.footer{
+    background-color: #003235 !important;
+    color:white !important;
+}
+.botao-instagram {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.botao-instagram:hover {
+    background-color: white;
+    color: #003235;
+}

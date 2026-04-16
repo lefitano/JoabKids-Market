@@ -53,6 +53,9 @@
 .legenda-carrossel {
     color: #003235;
 }
+.carrossel-container .carousel-indicators button {
+    background-color: #003235 !important;
+}
 .categoria-titulo {
     text-align: center;
     margin-top: 15px;

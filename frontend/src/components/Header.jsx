@@ -9,7 +9,7 @@ export default function Header(){
     return(
         <Navbar variant="dark" className="justify-content-center"style={{backgroundColor:"#003235"}}>
         <Container>
-          <Navbar.Brand href="/"><img src={tag} alt = "Joab Kids" height="80" /></Navbar.Brand>
+          <Navbar.Brand href="/"><img src={tag} alt = "Joab Kids" height="100" /></Navbar.Brand>
           <Nav className="mx-auto">
             <Button className="me-2" variant="outline-light" href="/">< BsHouseDoor className="me-1" />Página Inicial</Button>
             <Button className="me-2" variant="outline-light" href="/catalogo"><BsGrid className="me-1"/>Catálogo</Button>

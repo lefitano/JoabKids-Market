@@ -1,0 +1,12 @@
+.btn-loja-carrossel{
+    border-color: #003235 !important;
+    color: #003235 !important;
+    background-color: transparent !important;
+}
+
+.btn-loja-carrossel:hover{
+    background-color: #003235 !important;
+    color: white !important;
+}
+
+/* o !important é para forçar o css a ter prioridade sobre o bootstrap */

@@ -16,12 +16,11 @@ export default function Banner(){
         <>
          <div className="banner-titulo">
             <h2>Moda Infantil e Juvenil com Estilo</h2>
-            <p>Looks incríveis para os pequenos e os nem tão pequenos assim</p>
+            <p>Looks incríveis para os pequenos e os nem tão pequenos assim.</p>
         </div>
-        <Carousel className="carrossel-container" slide={false}>
+        <Carousel className="carrossel-container py-2" slide={false}>
           <Carousel.Item>
           {/* // d-block a imagem fica como um bloco e o w-100 para a ocupar toda a largura do container */}
-          {/* //site que gera imagens de placeholder apenas temporario */}
           <Row>
             <Col>
             <img
@@ -90,7 +89,7 @@ export default function Banner(){
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
-        <p className="categoria-titulo">Navegue por categoria</p>
+        <p className="categoria-titulo py-2">Navegue por categoria</p>
          <ButtonGroup className='d-flex justify-content-center my-1'>    
          <Button className="btn-loja-carrossel">Masculino</Button>
          <Button className="btn-loja-carrossel">Feminino</Button>

@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { BsBag, BsHouseDoor, BsGrid, BsPersonPlus, BsBoxArrowInRight} from "react-icons/bs";
+import { BsCart3, BsHouseDoor, BsGrid, BsPersonPlus, BsBoxArrowInRight} from "react-icons/bs";
 import Button from 'react-bootstrap/Button';
 import tag from '../assets/JoabKidsTag.jpeg';
 import '../css/Nav.css';
@@ -14,7 +14,7 @@ export default function Header(){
           <Nav className="mx-auto">
             <Button className="me-2" variant="outline-light" href="/">< BsHouseDoor className="me-1" />Página Inicial</Button>
             <Button className="me-2" variant="outline-light" href="/catalogo"><BsGrid className="me-1"/>Catálogo</Button>
-            <Button  className="me-2" variant ="outline-light" href="/carrinho"><BsBag className="me-1"/>Carrinho</Button>
+            <Button  className="me-2" variant ="outline-light" href="/carrinho"><BsCart3 className="me-1"/>Carrinho</Button>
             <Button className="me-2" variant ="outline-light" href="/login"><BsBoxArrowInRight className="me-1"/>Entrar</Button>
             <Button variant="light" href="/cadastro"><BsPersonPlus  className="me-1"/>Cadastrar</Button>
           </Nav>

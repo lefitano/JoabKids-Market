@@ -1,70 +1,68 @@
 .banner-titulo {
     text-align: center;
-    padding: 40px 20px 25px 20px;
-    background: linear-gradient(180deg, #f0f7f7 0%, #ffffff 100%);
+    padding: 50px 20px 35px 20px;
+    background: linear-gradient(160deg, #e8f4f4 0%, #f8fbfb 60%, #ffffff 100%);
     border-bottom: 3px solid #003235;
 }
 
+.banner-badge {
+    background-color: #003235 !important;
+    color: white !important;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
 .banner-titulo h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: bold;
     color: #003235;
     letter-spacing: 1px;
     text-transform: uppercase;
+    margin-bottom: 10px;
 }
 
 .banner-titulo p {
-    font-size: 1rem;
-    color: #555;
-    margin-top: 8px;
+    font-size: 1.05rem;
+    color: #666;
     font-style: italic;
-}
-.btn-loja-carrossel{
-    border-color: #003235 !important;
-    color: #003235 !important;
-    background-color: transparent !important;
+    margin-bottom: 18px;
 }
 
-.btn-loja-carrossel:hover{
-    background-color: #003235 !important;
-    color: white !important;
+.banner-link-catalogo {
+    display: inline-block;
+    color: #003235;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-bottom: 2px solid #003235;
+    padding-bottom: 2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.carrossel-container{
+.banner-link-catalogo:hover {
+    color: #005a5e;
+    border-color: #005a5e;
+}
+
+.carrossel-container {
     max-width: fit-content;
     margin: 0 auto;
     margin-top: 1px;
-    
 }
-.img-carrossel{
+
+.img-carrossel {
     height: 600px;
     object-fit: contain;
     object-position: top;
-    
 }
-/* .legenda-carrossel {
-    background-color: rgba(0, 50, 52, 0.6); 
-    border-radius: 8px;
-    padding: 5px 15px;
-    width: fit-content;
-    margin: 0 auto;
-    margin-bottom: 15px;
-} */
+
 .legenda-carrossel {
     color: #003235;
 }
+
 .carrossel-container .carousel-indicators button {
     background-color: #003235 !important;
 }
-.categoria-titulo {
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    color: #003235;
-    font-size: 0.95rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
 
-/* o !important é para forçar o css a ter prioridade sobre o bootstrap */

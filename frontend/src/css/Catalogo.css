@@ -1,0 +1,135 @@
+.catalogo-titulo {
+    text-align: center;
+    padding: 50px 20px 35px 20px;
+    background: linear-gradient(160deg, #e8f4f4 0%, #f8fbfb 60%, #ffffff 100%);
+    border-bottom: 3px solid #003235;
+}
+
+.catalogo-titulo h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #003235;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.catalogo-titulo p {
+    font-size: 1rem;
+    color: #666;
+    font-style: italic;
+}
+
+.catalogo-container {
+    padding: 40px 20px;
+}
+
+.filtros-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.btn-filtro {
+    border-color: #003235 !important;
+    color: #003235 !important;
+    background-color: transparent !important;
+}
+
+.btn-filtro:hover {
+    background-color: #003235 !important;
+    color: white !important;
+}
+
+.btn-filtro.ativo {
+    background-color: #003235 !important;
+    color: white !important;
+}
+
+.produto-card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 50, 53, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.produto-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0, 50, 53, 0.2);
+}
+
+.produto-img {
+    height: 260px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 16px 16px 0 0;
+}
+
+.badge-categoria {
+    background-color: #e8f4f4 !important;
+    color: #003235 !important;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.produto-nome {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 6px;
+}
+
+.produto-preco {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #003235;
+    margin-bottom: 0;
+}
+
+.btn-ver-produto {
+    background-color: #003235 !important;
+    border: none !important;
+    border-radius: 25px !important;
+    padding: 8px 24px !important;
+    color: white !important;
+    font-weight: 500;
+}
+
+.btn-ver-produto:hover {
+    background-color: #005a5e !important;
+    color: white !important;
+}
+
+.trocas-section {
+    padding: 70px 20px;
+    background-color: #003235;
+    color: white;
+}
+
+.trocas-subtitulo {
+    color: #9ecfcf !important;
+}
+
+.troca-item {
+    padding: 20px;
+}
+
+.troca-icone {
+    color: #7dd8d8;
+    margin-bottom: 15px;
+}
+
+.troca-item h5 {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.troca-item p {
+    color: #b8dede;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}

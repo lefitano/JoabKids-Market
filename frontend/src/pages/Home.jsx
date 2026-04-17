@@ -18,7 +18,7 @@ export default function Home() {
             <section className="categorias-section">
                 <Container>
                     <h2 className="section-titulo">Nossas Categorias</h2>
-                    <p className="section-subtitulo">Encontre o look perfeito para cada ocasião</p>
+                    <p className="section-subtitulo">Encontre o look perfeito para cada ocasião.</p>
                     <Row className="g-4 justify-content-center">
 
                         <Col xs={12} sm={4}>
@@ -29,7 +29,7 @@ export default function Home() {
                                     </div>
                                     <Card.Title>Masculino</Card.Title>
                                     <Card.Text className="text-muted">
-                                        Camisetas, calças, shorts e muito mais para os garotos
+                                        Camisetas, calças, shorts e muito mais para os garotos.
                                     </Card.Text>
                                     <Button href="/catalogo" className="btn-categoria mt-auto">
                                         Ver produtos
@@ -46,7 +46,7 @@ export default function Home() {
                                     </div>
                                     <Card.Title>Feminino</Card.Title>
                                     <Card.Text className="text-muted">
-                                        Vestidos, saias, blusas e looks encantadores para as meninas
+                                        Vestidos, saias, blusas e looks encantadores para as meninas.
                                     </Card.Text>
                                     <Button href="/catalogo" className="btn-categoria mt-auto">
                                         Ver produtos
@@ -63,7 +63,7 @@ export default function Home() {
                                     </div>
                                     <Card.Title>Calçados</Card.Title>
                                     <Card.Text className="text-muted">
-                                        Chinelos e sandálias confortáveis para os pés
+                                        Chinelos e sandálias confortáveis para os pés.
                                     </Card.Text>
                                     <Button href="/catalogo" className="btn-categoria mt-auto">
                                         Ver produtos

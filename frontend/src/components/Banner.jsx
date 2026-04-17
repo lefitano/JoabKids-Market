@@ -16,7 +16,7 @@ export default function Banner() {
         <>
             <div className="banner-titulo">
                 <Badge className="banner-badge mb-3">
-                    <BsBag className="me-1" /> Nova coleção disponível
+                    <BsBag className="me-1" /> Novidades semanalmente
                 </Badge>
                 <h2>Moda Infantil e Juvenil com Estilo</h2>
                 <p>Looks incríveis para os pequenos e os nem tão pequenos assim.</p>
@@ -28,7 +28,7 @@ export default function Banner() {
             <Carousel className="carrossel-container py-2" interval={4000}>
 
                 <Carousel.Item>
-                    <Row>
+                    <Row className="g-0">
                         <Col>
                             <img
                                 className="d-block w-100 img-carrossel"
@@ -51,7 +51,7 @@ export default function Banner() {
                 </Carousel.Item>
 
                 <Carousel.Item>
-                    <Row>
+                    <Row className="g-0">
                         <Col>
                             <img
                                 className="d-block w-100 img-carrossel"
@@ -74,7 +74,7 @@ export default function Banner() {
                 </Carousel.Item>
 
                 <Carousel.Item>
-                    <Row>
+                    <Row className="g-0">
                         <Col>
                             <img
                                 className="d-block w-100 img-carrossel"

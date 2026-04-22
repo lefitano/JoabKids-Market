@@ -34,7 +34,7 @@ export default function Catalogo() {
         <>
             <div className="catalogo-titulo">
                 <h2><BsGrid className="me-2" />Catálogo de Produtos</h2>
-                <p>Encontre o look perfeito para os seus filhos</p>
+                <p>Encontre o look perfeito para os seus filhos!</p>
             </div>
 
             <Container className="catalogo-container">
@@ -63,9 +63,9 @@ export default function Catalogo() {
 
             <section className="trocas-section">
                 <Container>
-                    <h2 className="section-titulo claro">Política de Trocas</h2>
+                    <h2 className="section-titulo claro">Política de Trocas:</h2>
                     <p className="section-subtitulo trocas-subtitulo">
-                        Sua satisfação é nossa prioridade
+                        Sua satisfação é nossa prioridade!
                     </p>
                     <Row className="g-4 text-center">
 

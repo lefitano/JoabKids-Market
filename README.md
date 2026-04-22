@@ -123,7 +123,11 @@ JoabKids/
 
 Projeto desenvolvido como parte da digitalização da loja **Joab Kids**.
 
-- **Leonardo Monteiro** — [GitHub](https://github.com/lefitano)
+- **Leonardo Monteiro**
+- **Marcio Reis**
+- **Ygor Pradoo**
+- **Saulo Ribeiro**
+- **Rafael Lira**
 
 ---
 

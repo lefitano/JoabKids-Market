@@ -101,7 +101,8 @@ JoabKids/
 └── frontend/
     └── src/
         ├── assets/           # Imagens e logos
-        ├── components/       # Componentes reutilizáveis
+        ├── components/      # Componentes reutilizáveis
+        │   ├── Categorias.jsx
         │   ├── Header.jsx
         │   ├── Banner.jsx
         │   ├── Footer.jsx

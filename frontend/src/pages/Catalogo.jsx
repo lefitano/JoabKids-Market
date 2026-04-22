@@ -36,7 +36,6 @@ export default function Catalogo() {
                 <h2><BsGrid className="me-2" />Catálogo de Produtos</h2>
                 <p>Encontre o look perfeito para os seus filhos!</p>
             </div>
-
             <Container className="catalogo-container">
 
                 <div className="filtros-wrapper">
@@ -52,7 +51,6 @@ export default function Catalogo() {
                         ))}
                     </ButtonGroup>
                 </div>
-
                 <Row className="g-4">
                     {produtosFiltrados.map(produto => (
                         <ProductCard key={produto.id} produto={produto} />
@@ -60,7 +58,6 @@ export default function Catalogo() {
                 </Row>
 
             </Container>
-
             <section className="trocas-section">
                 <Container>
                     <h2 className="section-titulo claro">Política de Trocas:</h2>

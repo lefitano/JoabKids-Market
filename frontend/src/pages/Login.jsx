@@ -11,7 +11,7 @@ export default function Login(){
     const[erro, setErro] = useState('');
     const navigate = useNavigate();
 
-    function handleSubmit(e){
+    const handleSubmit = async(e) => {
         e.preventDefault();
         setErro('');
         if (!email || !senha){

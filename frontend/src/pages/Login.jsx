@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { BsShieldExclamation } from "react-icons/bs"; //tentando usar ainda.
 import {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import  '../css/Login.css';
@@ -10,12 +11,12 @@ export default function Login(){
     const[senha, setSenha] = useState('');
     const[erro, setErro] = useState('');
     const navigate = useNavigate();
-
+    
     const handleSubmit = async(e) => {
         e.preventDefault();
         setErro('');
-        if (!email || !senha){
-            setErro('Preencha os campos');
+        if (!email || !senha){ // por enquanto que não foi feito a autenticação com firebase.
+            setErro('Preencha todos os campos para login!');
             return;
         }
         navigate('/');

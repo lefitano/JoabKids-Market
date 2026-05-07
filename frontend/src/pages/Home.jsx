@@ -1,6 +1,4 @@
-import Header from '../components/Header.jsx';
 import Banner from '../components/Banner.jsx';
-import Footer from '../components/Footer.jsx';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Recurse -Force)",
+      "Bash(Select-Object -Property FullName)",
+      "Bash(ConvertTo-Csv -NoTypeInformation)",
+      "Bash(Out-String)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\ygorc\\\\OneDrive\\\\Área de Trabalho\\\\faculdade\\\\dev web\\\\TrabalhoFinal\\\\JoabKids-Market\\\\frontend\\\\src\\\\css\" -File)",
+      "Bash(Select-Object -ExpandProperty Name)",
+      "Bash(npm run *)",
+      "Bash(npx vite *)"
+    ]
+  }
+}

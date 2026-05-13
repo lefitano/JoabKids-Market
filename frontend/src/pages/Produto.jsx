@@ -7,14 +7,17 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
 import { BsCartPlus, BsArrowLeft, BsDashLg, BsPlusLg } from 'react-icons/bs';
+import { useCarrinho } from '../context/CarrinhoContext.jsx';
 import '../css/Produto.css';
 
 export default function Produto() {
     const { state } = useLocation();
     const navigate = useNavigate();
     const produto = state?.produto;
+    const { adicionarItem } = useCarrinho();
 
     const [tamanhoSelecionado, setTamanhoSelecionado] = useState(null);
+    const [corSelecionada, setCorSelecionada] = useState(null);
     const [quantidade, setQuantidade] = useState(1);
 
     if (!produto) {
@@ -28,6 +31,19 @@ export default function Produto() {
 
     function aumentar() {
         setQuantidade(quantidade + 1);
+    }
+
+    function handleAdicionarAoCarrinho() {
+        if (!tamanhoSelecionado) {
+            alert('Selecione um tamanho antes de adicionar ao carrinho.');
+            return;
+        }
+        if (!corSelecionada) {
+            alert('Selecione uma cor antes de adicionar ao carrinho.');
+            return;
+        }
+        adicionarItem({ ...produto, tamanhoSelecionado, corSelecionada, quantidade });
+        navigate('/carrinho');
     }
 
     return (
@@ -68,6 +84,21 @@ export default function Produto() {
 
                     <hr className="produto-divider" />
 
+                    <p className="produto-label">Cor:</p>
+                    <div className="tamanhos-wrapper">
+                        {produto.cores.map(cor => (
+                            <button
+                                key={cor}
+                                className={corSelecionada === cor ? "btn-tamanho ativo" : "btn-tamanho"}
+                                onClick={() => setCorSelecionada(cor)}
+                            >
+                                {cor}
+                            </button>
+                        ))}
+                    </div>
+
+                    <hr className="produto-divider" />
+
                     <p className="produto-label">Quantidade:</p>
                     <div className="quantidade-wrapper">
                         <button className="btn-quantidade" onClick={diminuir}>
@@ -81,7 +112,7 @@ export default function Produto() {
 
                     <hr className="produto-divider" />
 
-                    <Button className="btn-carrinho">
+                    <Button className="btn-carrinho" onClick={handleAdicionarAoCarrinho}>
                         <BsCartPlus className="me-2" size={20} />
                         Adicionar ao carrinho
                     </Button>

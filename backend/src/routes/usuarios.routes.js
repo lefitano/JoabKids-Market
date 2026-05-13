@@ -1,4 +1,5 @@
 import { Router } from "express";
+import auth from "../middlewares/auth.js";
 import {
   cadastrarUsuario,
   loginUsuario,
@@ -11,8 +12,8 @@ const router = Router();
 
 router.post("/cadastro", cadastrarUsuario);
 router.post("/login", loginUsuario);
-router.get("/:id", buscarUsuarioPorId);
-router.put("/:id", atualizarUsuario);
-router.delete("/:id", deletarUsuario);
+router.get("/:id", auth, buscarUsuarioPorId);
+router.put("/:id", auth, atualizarUsuario);
+router.delete("/:id", auth, deletarUsuario);
 
 export default router;

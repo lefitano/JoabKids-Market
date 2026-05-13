@@ -1,4 +1,5 @@
 import { Router } from "express";
+import auth from "../middlewares/auth.js";
 import {
   listarPedidos,
   buscarPedidoPorId,
@@ -8,6 +9,9 @@ import {
 } from "../controllers/pedidos.controller.js";
 
 const router = Router();
+
+// todas as rotas de pedidos exigem usuario autenticado
+router.use(auth);
 
 router.get("/", listarPedidos);
 router.get("/:id", buscarPedidoPorId);

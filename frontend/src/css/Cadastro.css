@@ -1,0 +1,70 @@
+
+.formCadastro {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #e8f4f4;
+    padding: 40px 16px;
+}
+
+
+.CadastroCard {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 50, 53, 0.15);
+    width: 100%;
+    max-width: 560px;
+}
+
+
+.TituloCadastro {
+    color: #003235;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+
+.ErroFormCadastro {
+    color: #dc3545;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+
+.CadastroCard .btn-primary {
+    background-color: #003235;
+    border-color: #003235;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+.CadastroCard .btn-primary:hover {
+    background-color: #005a5e;
+    border-color: #005a5e;
+}
+
+
+.CadastroCard > p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.CadastroCard > p a {
+    color: #003235;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.CadastroCard > p a:hover {
+    text-decoration: underline;
+}

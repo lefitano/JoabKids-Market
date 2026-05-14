@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { BsShieldExclamation } from "react-icons/bs"; //tentando usar ainda.
+import { BsEnvelope, BsLock } from "react-icons/bs";
 import {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import  '../css/Login.css';
@@ -28,12 +28,12 @@ export default function Login(){
                 {erro && <p className="ErroForm">{erro}</p>}
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email cadastrado:</Form.Label>
+                        <Form.Label><BsEnvelope className="me-1" />Email cadastrado:</Form.Label>
                         <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Digite sua senha:</Form.Label>
+                        <Form.Label><BsLock className="me-1" />Digite sua senha:</Form.Label>
                         <Form.Control type="password" value={senha} onChange={(e) => setSenha(e.target.value)} placeholder="Senha" />
                     </Form.Group>
                     <Button variant="primary" type="submit">

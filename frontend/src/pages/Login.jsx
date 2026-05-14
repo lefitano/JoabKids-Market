@@ -28,12 +28,12 @@ export default function Login(){
                 {erro && <p className="ErroForm">{erro}</p>}
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email cadastrado</Form.Label>
-                        <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Campo  para email" />
+                        <Form.Label>Email cadastrado:</Form.Label>
+                        <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Digite sua senha</Form.Label>
+                        <Form.Label>Digite sua senha:</Form.Label>
                         <Form.Control type="password" value={senha} onChange={(e) => setSenha(e.target.value)} placeholder="Senha" />
                     </Form.Group>
                     <Button variant="primary" type="submit">

@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { BsStarFill, BsTagFill, BsRulers, BsPerson, BsPersonHeart } from 'react-icons/bs';
+import { BsStarFill, BsTagFill, BsRulers, BsPerson, BsPersonHeart, BsZoomIn } from 'react-icons/bs';
 import { GiRunningShoe } from 'react-icons/gi';
 import '../css/Home.css';
 
@@ -30,7 +30,7 @@ export default function Home() {
                                         Camisetas, calças, shorts e muito mais para os garotos.
                                     </Card.Text>
                                     <Button href="/catalogo" className="btn-categoria mt-auto">
-                                        Ver produtos
+                                        Ver produtos    <BsZoomIn/>
                                     </Button>
                                 </Card.Body>
                             </Card>
@@ -47,7 +47,7 @@ export default function Home() {
                                         Vestidos, saias, blusas e looks encantadores para as meninas.
                                     </Card.Text>
                                     <Button href="/catalogo" className="btn-categoria mt-auto">
-                                        Ver produtos
+                                        Ver produtos    <BsZoomIn/>
                                     </Button>
                                 </Card.Body>
                             </Card>
@@ -64,7 +64,7 @@ export default function Home() {
                                         Chinelos e sandálias confortáveis para os pés.
                                     </Card.Text>
                                     <Button href="/catalogo" className="btn-categoria mt-auto">
-                                        Ver produtos
+                                        Ver produtos    <BsZoomIn/>
                                     </Button>
                                 </Card.Body>
                             </Card>

@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import { BsPerson, BsEnvelope, BsLock, BsGeoAlt, BsBuilding, BsSignpost2, BsMap, BsHash, BsTelephone } from 'react-icons/bs';
+import { BsPerson, BsEnvelope, BsLock, BsGeoAlt, BsBuilding, BsSignpost2, BsMap, BsHash, BsTelephone,  BsPersonPlus  } from 'react-icons/bs';
 import {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import '../css/Cadastro.css';
@@ -98,7 +98,7 @@ export default function Cadastro(){
                     </Row> 
                     {erroCadastro && <p className="ErroFormCadastro">{erroCadastro}</p>}
                     <Button variant="primary" type="submit">
-                        Cadastrar
+                        Cadastrar <BsPersonPlus className="ms-1" />
                         </Button> 
                 </Form>
                 <p>Já tem uma conta? <Link to ="/login">Faça seu login!</Link></p>

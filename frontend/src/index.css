@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +7,23 @@
   }
   
   body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Nunito', sans-serif;
     background-color: #fff;
     color: #333;
   }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pagina-fade {
+    animation: fadeIn 0.35s ease;
+}
+

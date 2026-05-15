@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import Catalogo from './pages/Catalogo.jsx';
 import Carrinho from './pages/Carrinho.jsx';
@@ -12,9 +12,11 @@ import Footer from './components/Footer.jsx';
 import { CarrinhoProvider } from './context/CarrinhoContext.jsx';
 
 export default function App() {
+  const { pathname } = useLocation();
   return (
     <CarrinhoProvider>
       <Header />
+      <div key={pathname} className="pagina-fade">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="catalogo" element={<Catalogo />} />
@@ -23,6 +25,7 @@ export default function App() {
         <Route path="login" element={<Login />} />
         <Route path="produto" element={<Produto />} />
       </Routes>
+      </div>
       <Footer />
     </CarrinhoProvider>
   );

@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { BsEnvelope, BsLock } from "react-icons/bs";
+import { BsEnvelope, BsLock, BsArrowRight } from "react-icons/bs";
 import {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import  '../css/Login.css';
@@ -37,7 +37,7 @@ export default function Login(){
                         <Form.Control type="password" value={senha} onChange={(e) => setSenha(e.target.value)} placeholder="Senha" />
                     </Form.Group>
                     <Button variant="primary" type="submit">
-                        Entrar
+                        Entrar <BsArrowRight className="ms-1" />
                     </Button>
                 </Form>
                 <p>Não tem uma conta? <Link to="/cadastro">Cadastre-se agora!</Link></p>

@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
+import { BsZoomIn } from "react-icons/bs";
 
 export default function ProductCard({ produto }) {
     const navigate = useNavigate();
@@ -27,7 +28,7 @@ export default function ProductCard({ produto }) {
                         className="btn-ver-produto mt-auto"
                         onClick={() => navigate('/produto', { state: { produto } })}
                     >
-                        Ver produto
+                        Ver produto     <BsZoomIn/>
                     </Button>
                 </Card.Body>
             </Card>

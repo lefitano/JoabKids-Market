@@ -1,0 +1,269 @@
+/* ===== CABEÇALHO DA PÁGINA ===== */
+.meus-pedidos-titulo {
+    text-align: center;
+    padding: 50px 20px 35px 20px;
+    background: linear-gradient(160deg, #e8f4f4 0%, #f8fbfb 60%, #ffffff 100%);
+    border-bottom: 3px solid #003235;
+}
+
+.meus-pedidos-titulo h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #003235;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.meus-pedidos-titulo p {
+    font-size: 1rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.meus-pedidos-container {
+    padding: 40px 20px;
+    max-width: 860px;
+}
+
+/* ===== LISTA DE PEDIDOS ===== */
+.pedidos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ===== CARTÃO DE PEDIDO ===== */
+.pedido-card {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 50, 53, 0.1);
+    overflow: hidden;
+    transition: box-shadow 0.25s ease;
+}
+
+.pedido-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 50, 53, 0.18);
+}
+
+/* ===== CABEÇALHO DO CARTÃO (clicável) ===== */
+.pedido-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    cursor: pointer;
+    user-select: none;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.pedido-header:hover {
+    background-color: #f4fafa;
+}
+
+.pedido-header-esquerda {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.pedido-icone-recibo {
+    color: #003235;
+    flex-shrink: 0;
+}
+
+.pedido-id {
+    font-weight: bold;
+    color: #003235;
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+.pedido-data {
+    font-size: 0.8rem;
+    color: #888;
+    margin: 0;
+}
+
+.pedido-header-direita {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.pedido-badge-status {
+    font-size: 0.78rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pedido-total {
+    font-weight: bold;
+    color: #003235;
+    font-size: 1rem;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.pedido-toggle-icone {
+    color: #003235;
+    font-size: 0.9rem;
+}
+
+/* ===== CORPO EXPANDIDO ===== */
+.pedido-body {
+    padding: 0 24px 24px 24px;
+    border-top: 1px solid #e8f4f4;
+}
+
+.pedido-secao {
+    padding-top: 20px;
+}
+
+.pedido-secao-titulo {
+    font-weight: 700;
+    color: #003235;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+}
+
+/* ===== ITENS DO PEDIDO ===== */
+.pedido-itens-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pedido-item {
+    background-color: #f8fbfb;
+    border-radius: 10px;
+    padding: 12px 16px;
+}
+
+.pedido-item-nome {
+    font-weight: 600;
+    color: #222;
+    font-size: 0.95rem;
+    margin-bottom: 3px;
+}
+
+.pedido-item-detalhe {
+    font-size: 0.8rem;
+    color: #777;
+    margin: 0;
+}
+
+.pedido-item-qtd {
+    font-size: 0.85rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+}
+
+.pedido-item-preco {
+    font-weight: bold;
+    color: #003235;
+    font-size: 0.95rem;
+}
+
+/* ===== DIVISOR ===== */
+.pedido-divider {
+    border-color: #e0eeee;
+    margin: 20px 0;
+}
+
+/* ===== ENDEREÇO E TOTAL ===== */
+.pedido-endereco {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.pedido-total-bloco {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.pedido-total-label {
+    font-size: 0.78rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.pedido-total-valor {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #003235;
+    margin: 0;
+}
+
+/* ===== ESTADO VAZIO ===== */
+.pedidos-vazio {
+    padding: 80px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.pedidos-vazio-icone {
+    color: #9ecfcf;
+}
+
+.pedidos-vazio h3 {
+    color: #003235;
+    font-weight: bold;
+}
+
+.pedidos-vazio p {
+    color: #666;
+}
+
+/* ===== BOTÃO IR AO CATÁLOGO ===== */
+.btn-ir-catalogo {
+    background-color: #003235 !important;
+    border: none !important;
+    border-radius: 25px !important;
+    padding: 10px 32px !important;
+    font-size: 1rem !important;
+    color: white !important;
+    margin-top: 8px;
+}
+
+.btn-ir-catalogo:hover {
+    background-color: #005a5e !important;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 576px) {
+    .pedido-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pedido-header-direita {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .pedido-total-bloco {
+        align-items: flex-start;
+    }
+}

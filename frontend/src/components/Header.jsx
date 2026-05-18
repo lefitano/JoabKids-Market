@@ -7,6 +7,7 @@ import { BsCart3, BsHouseDoor, BsGrid, BsPersonPlus, BsBoxArrowInRight } from "r
 import Button from 'react-bootstrap/Button';
 import tag from '../assets/JoabKidsTag.jpeg';
 import { useCarrinho } from '../context/CarrinhoContext.jsx';
+import { BsClockHistory } from 'react-icons/bs';
 import '../css/Nav.css';
 
 export default function Header() {
@@ -31,6 +32,9 @@ export default function Header() {
                     </Button>
                     <Button className="me-2" variant={pathname === '/login' ? 'light' : 'outline-light'} as={Link} to="/login"><BsBoxArrowInRight className="me-1" />Entrar</Button>
                     <Button variant={pathname === '/cadastro' ? 'light' : 'outline-light'} as={Link} to="/cadastro"><BsPersonPlus className="me-1" />Cadastrar</Button>
+                    <Button className="me-2" variant={pathname === '/historico-pedidos' ? 'light' : 'outline-light'} as={Link} to="/historico-pedidos">
+                      <BsClockHistory className="me-1" /> Histórico Pedidos
+                    </Button>
                 </Nav>
             </Container>
         </Navbar>

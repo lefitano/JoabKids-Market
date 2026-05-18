@@ -9,6 +9,7 @@ import Login from './pages/Login.jsx';
 import Produto from './pages/Produto.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
+import HistoricoPedidos from './pages/HistoricoPedidos.jsx';
 import { CarrinhoProvider } from './context/CarrinhoContext.jsx';
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="cadastro" element={<Cadastro />} />
         <Route path="login" element={<Login />} />
         <Route path="produto" element={<Produto />} />
+        <Route path="historico-pedidos" element={<HistoricoPedidos />} />
       </Routes>
       </div>
       <Footer />

@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
 import { useProduto } from "../context/ProdutoContext";
+import { BsTags } from "react-icons/bs";
 
 const TAMANHOS_ROUPAS = ["2", "4", "6", "8", "10", "12", "14"];
 const TAMANHOS_CALCADOS = ["24", "26", "28", "30", "32", "34"];
@@ -81,7 +82,7 @@ export default function FormNovoProduto() {
 
     return (
         <div className="painel-conteudo">
-            <h5 className="painel-titulo">Novo Produto</h5>
+            <h5 className="painel-titulo">Novo Produto<BsTags className="ms-2"/></h5>
 
             {sucesso && <Alert variant="success">Produto adicionado com sucesso!</Alert>}
             {erro && <Alert variant="danger">{erro}</Alert>}

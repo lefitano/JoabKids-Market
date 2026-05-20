@@ -62,7 +62,7 @@ if(autenticado){
     <div className="PainelADM">
       <div className="admin-topbar">
         <BsClipboardData className="me-2"/>
-        Painel Administrativo - Acesso Único
+        Painel Administrativo - Acesso Único - Não forneça os dados de acesso
       </div>
       <Navbar expand="lg" style={{backgroundColor:"#003235"}}>
       <Container style={{position: "relative"}}>

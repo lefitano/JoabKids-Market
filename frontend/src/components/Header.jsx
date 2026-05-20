@@ -29,8 +29,6 @@ export default function Header() {
                             <Badge bg="warning" text="dark" className="ms-1">{itens.length}</Badge>
                         )}
                     </Button>
-                    <Button className="me-2" variant={pathname === '/login' ? 'light' : 'outline-light'} as={Link} to="/login"><BsBoxArrowInRight className="me-1" />Entrar</Button>
-                    <Button variant={pathname === '/cadastro' ? 'light' : 'outline-light'} as={Link} to="/cadastro"><BsPersonPlus className="me-1" />Cadastrar</Button>
                 </Nav>
             </Container>
         </Navbar>

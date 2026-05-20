@@ -48,8 +48,8 @@ A **Joab Kids** é uma loja física de roupas e calçados infantis localizada em
 | Página de produto | 🔧 Em desenvolvimento |
 | Carrinho de compras | 🔧 Em desenvolvimento |
 | Login e cadastro | 🔧 Em desenvolvimento |
-| Backend (API REST) | ⏳ Não iniciado |
-| Banco de dados | ⏳ Não iniciado |
+| Backend (API REST) | ⏳ Iniciado iniciado |
+| Banco de dados | ⏳ Iniciado iniciado |
 | Autenticação JWT | ⏳ Não iniciado |
 
 ---
@@ -123,11 +123,11 @@ JoabKids/
 
 Projeto desenvolvido como parte da digitalização da loja **Joab Kids**.
 
-- **Leonardo Monteiro**
-- **Marcio Reis**
-- **Ygor Pradoo**
-- **Saulo Ribeiro**
-- **Rafael Lira**
+- **Leonardo Monteiro** **Frontend + Backend**
+- **Marcio Reis** **Backend**
+- **Ygor Pradoo** **Backend**
+- **Saulo Ribeiro** **Backend + DB**
+- **Rafael Lira** **Backend + DB**
 
 ---
 

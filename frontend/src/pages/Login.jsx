@@ -37,7 +37,7 @@
 //                         <Form.Control type="password" value={senha} onChange={(e) => setSenha(e.target.value)} placeholder="Senha" />
 //                     </Form.Group>
 //                     <Button variant="primary" type="submit">
-//                         Entrar <BsArrowRight clas sName="ms-1" />
+//                         Entrar <BsArrowRight className="ms-1" />
 //                     </Button>
 //                 </Form>
 //                 <p>Não tem uma conta? <Link to="/cadastro">Cadastre-se agora!</Link></p>

@@ -7,6 +7,7 @@ import Carrinho from './pages/Carrinho.jsx';
 import Produto from './pages/Produto.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
+import Admin from './pages/Admin.jsx';
 import { CarrinhoProvider } from './context/CarrinhoContext.jsx';
 import { ProdutoProvider } from './context/ProdutoContext.jsx';
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="catalogo" element={<Catalogo />} />
         <Route path="carrinho" element={<Carrinho />} />
         <Route path="produto" element={<Produto />} />
+        <Route path="admin" element = {<Admin/>} />
       </Routes>
       </div>
       <Footer />

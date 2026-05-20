@@ -1,4 +1,4 @@
-/* .FormLogin {
+.FormLogin {
     min-height: 80vh;
     display: flex;
     flex-direction: column;
@@ -15,6 +15,12 @@
     box-shadow: 0 4px 20px rgba(0, 50, 53, 0.15);
     width: 100%;
     max-width: 420px;
+    transition: all 0.3 ease ;
+    
+}
+.LoginCard:hover{
+    box-shadow: 0 4px 20px rgba(0, 50, 53, 0.5);
+    
 }
 
 .TiuloForm {
@@ -22,6 +28,7 @@
     font-weight: 700;
     text-align: center;
     margin-bottom: 24px;
+    
 }
 
 .ErroForm {
@@ -61,4 +68,5 @@
 
 .LoginCard > p a:hover {
     text-decoration: underline;
-} */
+}
+

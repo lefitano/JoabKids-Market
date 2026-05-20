@@ -1,10 +1,14 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+
 import { BsEnvelope, BsLock, BsArrowRight } from "react-icons/bs";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/Login.css";
-import "../css/DahsboardGerencia.css";
+import "../css/DashboardGerencia.css";
 
 export default function Admin() {
   const [autenticado, setAutenticado] = useState(false);
@@ -53,8 +57,33 @@ export default function Admin() {
 if(autenticado){
   return(
     <div className="PainelADM">
-      <h2>Joab Kids</h2>
-      <h2>Painel de Gerência </h2>
+      <Navbar expand="lg" className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand href="#home">Joab Kids - Admin</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Button className="me-2" onClick ={() => setAbaAtiva('novo')}
+            variant={abaAtiva === 'novo' ? 'light' : 'outline-light'}>
+              Novo produto
+            </Button>
+            <Button className="me-2" onClick ={() => setAbaAtiva('editar')}
+            variant={abaAtiva === 'editar' ? 'light' : 'outline-light'}>
+              Editar Produto
+            </Button>
+            <Button className="me-2" onClick={() => setAbaAtiva('remover')}
+            variant={abaAtiva === 'remover' ? 'light' : 'outline-light'}>
+              Remover produto
+            </Button>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+    <div className="painel-conteudo">
+      {abaAtiva === 'novo' && <div>Formulário de novos produtos </div>}
+      {abaAtiva === 'editar' && <div>Lista para editar produtos </div>}
+      {abaAtiva === 'remover' && <div>Lista para remover produtos </div>}
+    </div>
     </div>
   )
 }

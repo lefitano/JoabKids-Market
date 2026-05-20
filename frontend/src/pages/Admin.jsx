@@ -3,12 +3,14 @@ import Form from "react-bootstrap/Form";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import Badge from 'react-bootstrap/Badge';
 
-import { BsEnvelope, BsLock, BsArrowRight } from "react-icons/bs";
+import { BsEnvelope, BsLock, BsArrowRight, BsPersonCircle, BsClipboardData, BsPlusCircleFill, BsPencilSquare, BsTrash } from "react-icons/bs";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/Login.css";
 import "../css/DashboardGerencia.css";
+import FormNovoProduto from "../components/FormNovoProduto";
 
 export default function Admin() {
   const [autenticado, setAutenticado] = useState(false);
@@ -56,33 +58,41 @@ export default function Admin() {
 }
 if(autenticado){
   return(
+    
     <div className="PainelADM">
-      <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">Joab Kids - Admin</Navbar.Brand>
+      <div className="admin-topbar">
+        <BsClipboardData className="me-2"/>
+        Painel Administrativo - Acesso Único
+      </div>
+      <Navbar expand="lg" style={{backgroundColor:"#003235"}}>
+      <Container style={{position: "relative"}}>
+        <Navbar.Brand href="#home" className="Titulopainel">
+          <BsPersonCircle className="me-2"/>Joab Kids
+          <Badge bg= "warning" text = "dark" className="ms-2">ADM</Badge>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Button className="me-2" onClick ={() => setAbaAtiva('novo')}
+          <Nav className="admin-nav-center">
+            <Button className="botoes-nav me-2" onClick ={() => setAbaAtiva('novo')}
             variant={abaAtiva === 'novo' ? 'light' : 'outline-light'}>
-              Novo produto
+              <BsPlusCircleFill className="me-2"/>Novo produto
             </Button>
-            <Button className="me-2" onClick ={() => setAbaAtiva('editar')}
+            <Button className="botoes-nav me-2" onClick ={() => setAbaAtiva('editar')}
             variant={abaAtiva === 'editar' ? 'light' : 'outline-light'}>
-              Editar Produto
+              <BsPencilSquare className="me-2"/>Editar Produto
             </Button>
-            <Button className="me-2" onClick={() => setAbaAtiva('remover')}
+            <Button className="botoes-nav me-2" onClick={() => setAbaAtiva('remover')}
             variant={abaAtiva === 'remover' ? 'light' : 'outline-light'}>
-              Remover produto
+              <BsTrash className="me-2"/>Remover produto
             </Button>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    <div className="painel-conteudo">
-      {abaAtiva === 'novo' && <div>Formulário de novos produtos </div>}
-      {abaAtiva === 'editar' && <div>Lista para editar produtos </div>}
-      {abaAtiva === 'remover' && <div>Lista para remover produtos </div>}
+    <div>
+      {abaAtiva === 'novo' && <FormNovoProduto />}
+      {abaAtiva === 'editar' && <div className="painel-conteudo">Lista para editar produtos</div>}
+      {abaAtiva === 'remover' && <div className="painel-conteudo">Lista para remover produtos</div>}
     </div>
     </div>
   )

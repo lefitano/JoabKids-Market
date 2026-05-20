@@ -1,3 +1,65 @@
+
 .PainelADM{
+    min-height: 100vh;
+    background-color: #ffffff;
     
 }
+
+.PainelADM .navbar{
+    background-color: #003235 !important; /* i important é para sobreescrever a cor que já vem no bootstrap*/
+    padding: 12px 24px;
+    box-shadow: 0 2px 8px rgba(0, 50, 53, 0.3);
+    
+}
+
+.PainelADM .navbar-brand{
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+.painel-conteudo{
+    padding: 40px;
+    max-width: 960px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,50, 53, 0.1);
+
+}
+
+.painel-titulo{
+    color: #003235;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e8f4f4;
+}
+
+.admin-nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.botoes-nav{
+    background-color: #003235;
+    color:#ffffff
+}
+.Titulopainel{
+    color:#ffffff
+}
+.admin-topbar {
+    background-color: #b48c09;  
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+

@@ -19,7 +19,7 @@ export default function Header() {
                 <Navbar.Brand className="navbrand" as={Link} to="/">
                     <img src={tag} alt="Joab Kids" height="100" />Joab Kids - Shop
                 </Navbar.Brand>
-                <Nav className="mx-auto">
+                <Nav>
                     <Button className="me-2" variant={pathname === '/' ? 'light' : 'outline-light'} as={Link} to="/"><BsHouseDoor className="me-1" />Página Inicial</Button>
                     <Button className="me-2" variant={pathname === '/catalogo' ? 'light' : 'outline-light'} as={Link} to="/catalogo"><BsGrid className="me-1" />Catálogo</Button>
                     <Button className="me-2" variant={pathname === '/carrinho' ? 'light' : 'outline-light'} as={Link} to="/carrinho">

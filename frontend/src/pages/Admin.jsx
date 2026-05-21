@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Badge from 'react-bootstrap/Badge';
 
-import { BsEnvelope, BsLock, BsArrowRight, BsPersonCircle, BsClipboardData, BsPlusCircleFill, BsPencilSquare, BsTrash } from "react-icons/bs";
+import { BsEnvelope, BsLock, BsStar, BsArrowRight, BsPersonCircle, BsClipboardData, BsPlusCircleFill, BsPencilSquare, BsTrash } from "react-icons/bs";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/Login.css";
@@ -85,6 +85,10 @@ if(autenticado){
             variant={abaAtiva === 'remover' ? 'light' : 'outline-light'}>
               <BsTrash className="me-2"/>Remover produto
             </Button>
+            <Button className="botoes-nav me-2" onClick= {() => setAbaAtiva('alterardestaque')}
+            variant={abaAtiva === 'alterardestaque' ? 'light' : 'outline-right'}>
+              <BsStar className="me-2"/> Mostruário
+            </Button>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -93,6 +97,7 @@ if(autenticado){
       {abaAtiva === 'novo' && <FormNovoProduto />}
       {abaAtiva === 'editar' && <div className="painel-conteudo">Lista para editar produtos</div>}
       {abaAtiva === 'remover' && <div className="painel-conteudo">Lista para remover produtos</div>}
+      {abaAtiva === 'alterardestaque' && <div className="painel-conteudo">Altere os destaques da página</div>}
     </div>
     </div>
   )

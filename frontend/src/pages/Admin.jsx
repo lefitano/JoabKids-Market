@@ -5,13 +5,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Badge from 'react-bootstrap/Badge';
 
-import { BsEnvelope, BsLock, BsListCheck, BsStar, BsArrowRight, BsPersonCircle, BsClipboardData, BsPlusCircleFill, BsPencilSquare, BsTrash } from "react-icons/bs";
+import {BsListCheck, BsStar, BsArrowRight, BsPersonCircle, BsClipboardData, BsPlusCircleFill, BsPencilSquare, BsTrash } from "react-icons/bs";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import "../css/Login.css";
 import "../css/DashboardGerencia.css";
 import FormNovoProduto from "../components/FormNovoProduto";
 import GerenciarDestaques from "../components/GerenciarDestaques";
+import ListarProdutos from "../components/ListarProdutos";
+import RemoverProduto from "../components/RemoverProduto";
 
 export default function Admin() {
   const [autenticado, setAutenticado] = useState(false);
@@ -101,9 +102,9 @@ if(autenticado){
     <div>
       {abaAtiva === 'novo' && <FormNovoProduto />}
       {abaAtiva === 'editar' && <div className="painel-conteudo">Lista para editar produtos</div>}
-      {abaAtiva === 'remover' && <div className="painel-conteudo">Lista para remover produtos</div>}
+      {abaAtiva === 'remover' && <RemoverProduto/>}
       {abaAtiva === 'alterardestaque' && <GerenciarDestaques/>}
-      {abaAtiva === 'produtoscadastrados' && <div className="painel-conteudo">Lista de produtos já cadastrados</div>}
+      {abaAtiva === 'listarprodutos' && <ListarProdutos/>}
     </div>
     </div>
   )

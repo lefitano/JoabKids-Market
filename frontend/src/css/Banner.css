@@ -49,20 +49,88 @@
 .carrossel-container {
     width: 100%;
     overflow: hidden;
-    margin-top: 1px;
 }
 
 .img-carrossel {
-    height: 600px;
+    height: 500px;
+    width: 100%;
     object-fit: contain;
-    object-position: top;
+    object-position: center;
+    transition: color 0.3 ease;
 }
 
-.legenda-carrossel {
+.slide-produto {
+    background: linear-gradient(135deg, #e8f4f4 0%, #ffffff 100%);
+    min-height: 500px;
+}
+
+.slide-imagem-col {
+    background-color: #e8f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.slide-info {
+    padding: 48px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slide-categoria {
+    background-color: #003235 !important;
+    color: #ffffff !important;
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: fit-content;
+}
+
+.slide-nome {
+    font-size: 2rem;
+    font-weight: 700;
     color: #003235;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.slide-descricao {
+    font-size: 1rem;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.slide-preco {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #003235;
+}
+
+.slide-botao {
+    background-color: #003235;
+    border: none;
+    padding: 10px 24px;
+    font-weight: 600;
+    width: fit-content;
+    transition: background-color 0.2s ease;
+}
+
+.slide-botao:hover {
+    background-color: #005a5e;
 }
 
 .carrossel-container .carousel-indicators button {
     background-color: #003235 !important;
+}
+
+.carrossel-container .carousel-control-prev-icon,
+.carrossel-container .carousel-control-next-icon {
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(130deg);
 }
 

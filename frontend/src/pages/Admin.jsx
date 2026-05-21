@@ -88,7 +88,7 @@ if(autenticado){
             </Button>
             <Button className="botoes-nav me-2" onClick= {() => setAbaAtiva('alterardestaque')}
             variant={abaAtiva === 'alterardestaque' ? 'light' : 'outline-light'}>
-              <BsStar className="me-2"/> Mostruário
+              <BsStar className="me-2"/>Mostruário
             </Button>
           </Nav>
         </Navbar.Collapse>

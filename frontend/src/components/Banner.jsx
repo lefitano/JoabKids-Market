@@ -2,18 +2,14 @@ import Carousel from 'react-bootstrap/Carousel';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Badge from 'react-bootstrap/Badge';
-import { BsBag, BsArrowRight } from 'react-icons/bs';
+import Button from 'react-bootstrap/Button';
+import { BsBag, BsArrowRight, BsTagFill } from 'react-icons/bs';
 import { useProduto } from '../context/ProdutoContext';
 import '../css/Banner.css';
 
 export default function Banner() {
     const { produtos } = useProduto();
     const destaques = produtos.filter(p => p.destaque);
-
-    const slides = [];
-    for (let i = 0; i < destaques.length; i += 2) {
-        slides.push(destaques.slice(i, i + 2));
-    }
 
     return (
         <>
@@ -28,24 +24,32 @@ export default function Banner() {
                 </a>
             </div>
 
-            <Carousel className="carrossel-container py-2" interval={4000}>
-                {slides.map((par, index) => (
-                    <Carousel.Item key={index}>
-                        <Row className="g-0">
-                            {par.map((produto) => (
-                                <Col key={produto.id}>
-                                    <img
-                                        className="d-block w-100 img-carrossel"
-                                        src={produto.imagem}
-                                        alt={produto.nome}
-                                    />
-                                </Col>
-                            ))}
+            <Carousel className="carrossel-container" interval={4000}>
+                {destaques.map((produto) => (
+                    <Carousel.Item key={produto.id}>
+                        <Row className="g-0 align-items-center slide-produto">
+                            <Col md={6} className="slide-imagem-col">
+                                <img
+                                    className="img-carrossel"
+                                    src={produto.imagem}
+                                    alt={produto.nome}
+                                />
+                            </Col>
+                            <Col md={6} className="slide-info">
+                                <Badge className="slide-categoria mb-3">
+                                    {produto.categoria}
+                                </Badge>
+                                <h2 className="slide-nome">{produto.nome}</h2>
+                                <p className="slide-descricao">{produto.descricao}</p>
+                                <div className="slide-preco">
+                                    <BsTagFill className="me-2" />
+                                    R$ {produto.preco.toFixed(2)}
+                                </div>
+                                <Button href="/catalogo" className="slide-botao mt-4">
+                                    Ver no catálogo <BsArrowRight className="ms-2" />
+                                </Button>
+                            </Col>
                         </Row>
-                        <Carousel.Caption className="legenda-carrossel">
-                            <h3>{par.map(p => p.nome).join(" & ")}</h3>
-                            <h5 className="mensagem-fixa-carrossel  ">Tudo isso e muito mais!</h5>
-                        </Carousel.Caption>
                     </Carousel.Item>
                 ))}
             </Carousel>

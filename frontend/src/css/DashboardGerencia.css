@@ -43,11 +43,16 @@
     left: 50%;
     transform: translateX(-50%);
     display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
 }
 
 .botoes-nav{
     background-color: #003235;
-    color:#ffffff
+    color: #ffffff;
+    white-space: nowrap;
+    display: inline-flex !important;
+    align-items: center;
 }
 .Titulopainel{
     color:#ffffff

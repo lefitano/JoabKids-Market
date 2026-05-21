@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Badge from 'react-bootstrap/Badge';
 
-import { BsEnvelope, BsLock, BsStar, BsArrowRight, BsPersonCircle, BsClipboardData, BsPlusCircleFill, BsPencilSquare, BsTrash } from "react-icons/bs";
+import { BsEnvelope, BsLock, BsListCheck, BsStar, BsArrowRight, BsPersonCircle, BsClipboardData, BsPlusCircleFill, BsPencilSquare, BsTrash } from "react-icons/bs";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/Login.css";
@@ -74,21 +74,25 @@ if(autenticado){
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="admin-nav-center">
-            <Button className="botoes-nav me-2" onClick ={() => setAbaAtiva('novo')}
+            <Button size="sm" className="botoes-nav" onClick ={() => setAbaAtiva('novo')}
             variant={abaAtiva === 'novo' ? 'light' : 'outline-light'}>
               <BsPlusCircleFill className="me-2"/>Novo produto
             </Button>
-            <Button className="botoes-nav me-2" onClick ={() => setAbaAtiva('editar')}
+            <Button size="sm" className="botoes-nav" onClick ={() => setAbaAtiva('editar')}
             variant={abaAtiva === 'editar' ? 'light' : 'outline-light'}>
               <BsPencilSquare className="me-2"/>Editar Produto
             </Button>
-            <Button className="botoes-nav me-2" onClick={() => setAbaAtiva('remover')}
+            <Button size="sm" className="botoes-nav" onClick={() => setAbaAtiva('remover')}
             variant={abaAtiva === 'remover' ? 'light' : 'outline-light'}>
               <BsTrash className="me-2"/>Remover produto
             </Button>
-            <Button className="botoes-nav me-2" onClick= {() => setAbaAtiva('alterardestaque')}
+            <Button size="sm" className="botoes-nav" onClick= {() => setAbaAtiva('alterardestaque')}
             variant={abaAtiva === 'alterardestaque' ? 'light' : 'outline-light'}>
               <BsStar className="me-2"/>Mostruário
+            </Button>
+            <Button size="sm" className="botoes-nav" onClick={() => setAbaAtiva('listarprodutos')}
+            variant={abaAtiva === 'listarprodutos' ? 'light' : 'outline-light'}>
+              <BsListCheck className="me-2"/>Listar produtos
             </Button>
           </Nav>
         </Navbar.Collapse>
@@ -99,6 +103,7 @@ if(autenticado){
       {abaAtiva === 'editar' && <div className="painel-conteudo">Lista para editar produtos</div>}
       {abaAtiva === 'remover' && <div className="painel-conteudo">Lista para remover produtos</div>}
       {abaAtiva === 'alterardestaque' && <GerenciarDestaques/>}
+      {abaAtiva === 'produtoscadastrados' && <div className="painel-conteudo">Lista de produtos já cadastrados</div>}
     </div>
     </div>
   )

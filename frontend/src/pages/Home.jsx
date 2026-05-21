@@ -109,12 +109,6 @@ export default function Home() {
                     </Row>
                 </Container>
             </section>
-            <section className = "produtos-destaque">
-                <Container>
-                    
-                </Container>
-            </section>
-
         </>
     );
 }

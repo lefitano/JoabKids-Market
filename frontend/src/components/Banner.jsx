@@ -3,15 +3,18 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Badge from 'react-bootstrap/Badge';
 import { BsBag, BsArrowRight } from 'react-icons/bs';
-import ImagemMasculino1 from '../assets/ImagesMascBanner.jpeg';
-import ImagemFeminino1 from '../assets/ImagesFeminBanner.jpeg';
-import ImagemCalcado1 from '../assets/Calcado1Banner.jpeg';
-import ImagemMasculino2 from '../assets/ImagesMasc2Banner.jpeg';
-import ImagemFeminino2 from '../assets/ImagesFemin2Banner.jpeg';
-import ImagemCalcado2 from '../assets/Calcados2Banner.jpeg';
+import { useProduto } from '../context/ProdutoContext';
 import '../css/Banner.css';
 
 export default function Banner() {
+    const { produtos } = useProduto();
+    const destaques = produtos.filter(p => p.destaque);
+
+    const slides = [];
+    for (let i = 0; i < destaques.length; i += 2) {
+        slides.push(destaques.slice(i, i + 2));
+    }
+
     return (
         <>
             <div className="banner-titulo">
@@ -26,76 +29,25 @@ export default function Banner() {
             </div>
 
             <Carousel className="carrossel-container py-2" interval={4000}>
-
-                <Carousel.Item>
-                    <Row className="g-0">
-                        <Col>
-                            <img
-                                className="d-block w-100 img-carrossel"
-                                src={ImagemMasculino1}
-                                alt="Imagem Masculino 1"
-                            />
-                        </Col>
-                        <Col>
-                            <img
-                                className="d-block w-100 img-carrossel"
-                                src={ImagemMasculino2}
-                                alt="Imagem Masculino 2"
-                            />
-                        </Col>
-                    </Row>
-                    <Carousel.Caption className="legenda-carrossel">
-                        <h3>Para os garotos</h3>
-                        <p>Confira nossas opções masculinas</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-
-                <Carousel.Item>
-                    <Row className="g-0">
-                        <Col>
-                            <img
-                                className="d-block w-100 img-carrossel"
-                                src={ImagemFeminino1}
-                                alt="Imagem Feminina 1"
-                            />
-                        </Col>
-                        <Col>
-                            <img
-                                className="d-block w-100 img-carrossel"
-                                src={ImagemFeminino2}
-                                alt="Imagem Feminina 2"
-                            />
-                        </Col>
-                    </Row>
-                    <Carousel.Caption className="legenda-carrossel">
-                        <h3>Para as moças</h3>
-                        <p>Looks incríveis para elas</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-
-                <Carousel.Item>
-                    <Row className="g-0">
-                        <Col>
-                            <img
-                                className="d-block w-100 img-carrossel"
-                                src={ImagemCalcado1}
-                                alt="Imagem Calçado 1"
-                            />
-                        </Col>
-                        <Col>
-                            <img
-                                className="d-block w-100 img-carrossel"
-                                src={ImagemCalcado2}
-                                alt="Imagem Calçado 2"
-                            />
-                        </Col>
-                    </Row>
-                    <Carousel.Caption className="legenda-carrossel">
-                        <h3>Nossos calçados</h3>
-                        <p>Conforto e estilo para os pés</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-
+                {slides.map((par, index) => (
+                    <Carousel.Item key={index}>
+                        <Row className="g-0">
+                            {par.map((produto) => (
+                                <Col key={produto.id}>
+                                    <img
+                                        className="d-block w-100 img-carrossel"
+                                        src={produto.imagem}
+                                        alt={produto.nome}
+                                    />
+                                </Col>
+                            ))}
+                        </Row>
+                        <Carousel.Caption className="legenda-carrossel">
+                            <h3>{par.map(p => p.nome).join(" & ")}</h3>
+                            <h5 className="mensagem-fixa-carrossel  ">Tudo isso e muito mais!</h5>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                ))}
             </Carousel>
         </>
     );

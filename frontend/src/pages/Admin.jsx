@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../css/Login.css";
 import "../css/DashboardGerencia.css";
 import FormNovoProduto from "../components/FormNovoProduto";
+import GerenciarDestaques from "../components/GerenciarDestaques";
 
 export default function Admin() {
   const [autenticado, setAutenticado] = useState(false);
@@ -86,7 +87,7 @@ if(autenticado){
               <BsTrash className="me-2"/>Remover produto
             </Button>
             <Button className="botoes-nav me-2" onClick= {() => setAbaAtiva('alterardestaque')}
-            variant={abaAtiva === 'alterardestaque' ? 'light' : 'outline-right'}>
+            variant={abaAtiva === 'alterardestaque' ? 'light' : 'outline-light'}>
               <BsStar className="me-2"/> Mostruário
             </Button>
           </Nav>
@@ -97,7 +98,7 @@ if(autenticado){
       {abaAtiva === 'novo' && <FormNovoProduto />}
       {abaAtiva === 'editar' && <div className="painel-conteudo">Lista para editar produtos</div>}
       {abaAtiva === 'remover' && <div className="painel-conteudo">Lista para remover produtos</div>}
-      {abaAtiva === 'alterardestaque' && <div className="painel-conteudo">Altere os destaques da página</div>}
+      {abaAtiva === 'alterardestaque' && <GerenciarDestaques/>}
     </div>
     </div>
   )

@@ -3,7 +3,7 @@ import { BsStarFill, BsStar } from "react-icons/bs";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 
-const MAX_DESTAQUES = 4;
+const MAX_DESTAQUES = 6;
 
 export default function GerenciarDestaques() {
     const { produtos, toggleDestaque } = useProduto();

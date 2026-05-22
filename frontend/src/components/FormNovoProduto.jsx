@@ -8,6 +8,7 @@ import { useProduto } from "../context/ProdutoContext";
 import { BsTags } from "react-icons/bs";
 
 const TAMANHOS_ROUPAS = ["2", "4", "6", "8", "10", "12", "14"];
+const CORES_DISPONIVEIS = ["Azul", "Branco", "Cinza", "Preto", "Rosa", "Vermelho", "Amarelo", "Verde", "Roxo", "Lilás", "Cáqui", "Azul Marinho", "Dourado", "Prata"];
 const TAMANHOS_CALCADOS = ["24", "26", "28", "30", "32", "34"];
 const CATEGORIAS = ["Masculino", "Feminino", "Calçados"];
 
@@ -17,8 +18,7 @@ const estadoInicial = {
     preco: "",
     categoria: "",
     imagem: "",
-    tamanhos: [],
-    cores: "",
+    variantes: {},
     descricao: "",
 };
 
@@ -33,16 +33,29 @@ export default function FormNovoProduto() {
 
     function handleChange(e) {
         const { name, value } = e.target;
-        setForm((prev) => ({ ...prev, [name]: value, ...(name === "categoria" ? { tamanhos: [] } : {}) }));
+        setForm((prev) => ({ ...prev, [name]: value, ...(name === "categoria" ? {  variantes: {} } : {}) }));
     }
 
     function handleTamanho(tamanho) {
-        setForm((prev) => ({
-            ...prev,
-            tamanhos: prev.tamanhos.includes(tamanho)
-                ? prev.tamanhos.filter((t) => t !== tamanho)
-                : [...prev.tamanhos, tamanho],
-        }));
+        setForm((prev) => {
+            const novasVariantes = { ...prev.variantes };
+            if (novasVariantes[tamanho]) {
+                delete novasVariantes[tamanho];
+            } else {
+                novasVariantes[tamanho] = [];
+            }
+            return { ...prev, variantes: novasVariantes };
+        });
+    }
+
+    function handleCor(tamanho, cor) {
+        setForm((prev) => {
+            const coresAtuais = prev.variantes[tamanho] || [];
+            const novasCores = coresAtuais.includes(cor)
+                ? coresAtuais.filter((c) => c !== cor)
+                : [...coresAtuais, cor];
+            return { ...prev, variantes: { ...prev.variantes, [tamanho]: novasCores } };
+        });
     }
 
     function handleSubmit(e) {
@@ -53,12 +66,13 @@ export default function FormNovoProduto() {
             setErro("Preencha todos os campos obrigatórios.");
             return;
         }
-        if (form.tamanhos.length === 0) {
-            setErro("Selecione ao menos um tamanho.");
+        if (Object.keys(form.variantes).length === 0) {
+            setErro("Adicione ao menos um tamanho.");
             return;
         }
-        if (form.cores.trim() === "") {
-            setErro("Informe ao menos uma cor.");
+        const tamanhoSemCor = Object.entries(form.variantes).some(([, cores]) => cores.length === 0);
+        if (tamanhoSemCor) {
+            setErro("Todos os tamanhos selecionados precisam ter ao menos uma cor.");
             return;
         }
 

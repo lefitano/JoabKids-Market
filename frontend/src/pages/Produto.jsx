@@ -20,6 +20,10 @@ export default function Produto() {
     const [corSelecionada, setCorSelecionada] = useState(null);
     const [quantidade, setQuantidade] = useState(1);
 
+    const coresDisponiveis = tamanhoSelecionado && produto
+        ? produto.variantes[tamanhoSelecionado]
+        : [];
+
     if (!produto) {
         navigate('/catalogo');
         return null;
@@ -71,11 +75,11 @@ export default function Produto() {
 
                     <p className="produto-label">Tamanho:</p>
                     <div className="tamanhos-wrapper">
-                        {produto.tamanhos.map(tamanho => (
+                        {Object.keys(produto.variantes).map(tamanho => (
                             <button
                                 key={tamanho}
                                 className={tamanhoSelecionado === tamanho ? "btn-tamanho ativo" : "btn-tamanho"}
-                                onClick={() => setTamanhoSelecionado(tamanho)}
+                                onClick={() => { setTamanhoSelecionado(tamanho); setCorSelecionada(null); }}
                             >
                                 {tamanho}
                             </button>
@@ -86,7 +90,7 @@ export default function Produto() {
 
                     <p className="produto-label">Cor:</p>
                     <div className="tamanhos-wrapper">
-                        {produto.cores.map(cor => (
+                        {coresDisponiveis.map(cor => (
                             <button
                                 key={cor}
                                 className={corSelecionada === cor ? "btn-tamanho ativo" : "btn-tamanho"}

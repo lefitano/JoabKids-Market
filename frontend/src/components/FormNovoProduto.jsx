@@ -4,11 +4,10 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
+import { BsTags, BsXCircleFill, BsPlusCircle } from "react-icons/bs";
 import { useProduto } from "../context/ProdutoContext";
-import { BsTags } from "react-icons/bs";
 
 const TAMANHOS_ROUPAS = ["2", "4", "6", "8", "10", "12", "14"];
-const CORES_DISPONIVEIS = ["Azul", "Branco", "Cinza", "Preto", "Rosa", "Vermelho", "Amarelo", "Verde", "Roxo", "Lilás", "Cáqui", "Azul Marinho", "Dourado", "Prata"];
 const TAMANHOS_CALCADOS = ["24", "26", "28", "30", "32", "34"];
 const CATEGORIAS = ["Masculino", "Feminino", "Calçados"];
 
@@ -25,6 +24,7 @@ const estadoInicial = {
 export default function FormNovoProduto() {
     const { produtos, adicionarProduto } = useProduto();
     const [form, setForm] = useState(estadoInicial);
+    const [inputCores, setInputCores] = useState({});
     const [sucesso, setSucesso] = useState(false);
     const [erro, setErro] = useState("");
 
@@ -33,14 +33,16 @@ export default function FormNovoProduto() {
 
     function handleChange(e) {
         const { name, value } = e.target;
-        setForm((prev) => ({ ...prev, [name]: value, ...(name === "categoria" ? {  variantes: {} } : {}) }));
+        setForm((prev) => ({ ...prev, [name]: value, ...(name === "categoria" ? { variantes: {} } : {}) }));
+        if (name === "categoria") setInputCores({});
     }
 
     function handleTamanho(tamanho) {
         setForm((prev) => {
             const novasVariantes = { ...prev.variantes };
-            if (novasVariantes[tamanho]) {
+            if (novasVariantes[tamanho] !== undefined) {
                 delete novasVariantes[tamanho];
+                setInputCores((prev) => { const n = { ...prev }; delete n[tamanho]; return n; });
             } else {
                 novasVariantes[tamanho] = [];
             }
@@ -48,14 +50,25 @@ export default function FormNovoProduto() {
         });
     }
 
-    function handleCor(tamanho, cor) {
-        setForm((prev) => {
-            const coresAtuais = prev.variantes[tamanho] || [];
-            const novasCores = coresAtuais.includes(cor)
-                ? coresAtuais.filter((c) => c !== cor)
-                : [...coresAtuais, cor];
-            return { ...prev, variantes: { ...prev.variantes, [tamanho]: novasCores } };
-        });
+    function adicionarCor(tamanho) {
+        const cor = (inputCores[tamanho] || "").trim();
+        if (!cor) return;
+        if (form.variantes[tamanho].includes(cor)) return;
+        setForm((prev) => ({
+            ...prev,
+            variantes: { ...prev.variantes, [tamanho]: [...prev.variantes[tamanho], cor] },
+        }));
+        setInputCores((prev) => ({ ...prev, [tamanho]: "" }));
+    }
+
+    function removerCor(tamanho, cor) {
+        setForm((prev) => ({
+            ...prev,
+            variantes: {
+                ...prev.variantes,
+                [tamanho]: prev.variantes[tamanho].filter((c) => c !== cor),
+            },
+        }));
     }
 
     function handleSubmit(e) {
@@ -83,20 +96,21 @@ export default function FormNovoProduto() {
             preco: parseFloat(form.preco),
             categoria: form.categoria,
             imagem: form.imagem.trim(),
-            tamanhos: form.tamanhos,
-            cores: form.cores.split(",").map((c) => c.trim()).filter(Boolean),
+            variantes: form.variantes,
             descricao: form.descricao.trim(),
+            destaque: false,
         };
 
         adicionarProduto(novoProduto);
         setForm(estadoInicial);
+        setInputCores({});
         setSucesso(true);
         setTimeout(() => setSucesso(false), 3000);
     }
 
     return (
         <div className="painel-conteudo">
-            <h5 className="painel-titulo">Novo Produto<BsTags className="ms-2"/></h5>
+            <h5 className="painel-titulo">Novo Produto <BsTags className="ms-2"/></h5>
 
             {sucesso && <Alert variant="success">Produto adicionado com sucesso!</Alert>}
             {erro && <Alert variant="danger">{erro}</Alert>}
@@ -106,37 +120,19 @@ export default function FormNovoProduto() {
                     <Col md={4}>
                         <Form.Group>
                             <Form.Label>Referência *</Form.Label>
-                            <Form.Control
-                                name="referencia"
-                                value={form.referencia}
-                                onChange={handleChange}
-                                placeholder="Ex: JK-007"
-                            />
+                            <Form.Control name="referencia" value={form.referencia} onChange={handleChange} placeholder="Ex: JK-007" />
                         </Form.Group>
                     </Col>
                     <Col md={5}>
                         <Form.Group>
                             <Form.Label>Nome do produto *</Form.Label>
-                            <Form.Control
-                                name="nome"
-                                value={form.nome}
-                                onChange={handleChange}
-                                placeholder="Ex: Camiseta Esportiva"
-                            />
+                            <Form.Control name="nome" value={form.nome} onChange={handleChange} placeholder="Ex: Camiseta Esportiva" />
                         </Form.Group>
                     </Col>
                     <Col md={3}>
                         <Form.Group>
                             <Form.Label>Preço (R$) *</Form.Label>
-                            <Form.Control
-                                type="number"
-                                name="preco"
-                                value={form.preco}
-                                onChange={handleChange}
-                                placeholder="Ex: 49.90"
-                                min="0"
-                                step="0.01"
-                            />
+                            <Form.Control type="number" name="preco" value={form.preco} onChange={handleChange} placeholder="Ex: 49.90" min="0" step="0.01" />
                         </Form.Group>
                     </Col>
                 </Row>
@@ -156,58 +152,67 @@ export default function FormNovoProduto() {
                     <Col md={8}>
                         <Form.Group>
                             <Form.Label>URL da imagem *</Form.Label>
-                            <Form.Control
-                                name="imagem"
-                                value={form.imagem}
-                                onChange={handleChange}
-                                placeholder="https://..."
-                            />
+                            <Form.Control name="imagem" value={form.imagem} onChange={handleChange} placeholder="https://..." />
                         </Form.Group>
                     </Col>
                 </Row>
 
                 <Form.Group className="mb-3">
                     <Form.Label>
-                        Tamanhos disponíveis *
-                        {!form.categoria && <span className="text-muted ms-2" style={{fontSize:"0.8rem"}}>(selecione uma categoria primeiro)</span>}
+                        Variantes — Tamanhos e Cores *
+                        {!form.categoria && <span className="text-muted ms-2" style={{ fontSize: "0.8rem" }}>(selecione uma categoria primeiro)</span>}
                     </Form.Label>
-                    <div className="d-flex gap-2 flex-wrap">
+                    <div className="d-flex flex-column gap-3">
                         {tamanhosDaCategoria.map((tam) => (
-                            <Button
-                                key={tam}
-                                type="button"
-                                size="sm"
-                                variant={form.tamanhos.includes(tam) ? "success" : "outline-secondary"}
-                                onClick={() => handleTamanho(tam)}
-                                disabled={!form.categoria}
-                            >
-                                {tam}
-                            </Button>
+                            <div key={tam} className="variante-linha">
+                                <Button
+                                    type="button"
+                                    size="sm"
+                                    variant={form.variantes[tam] !== undefined ? "success" : "outline-secondary"}
+                                    onClick={() => handleTamanho(tam)}
+                                    disabled={!form.categoria}
+                                    className="variante-tam-btn"
+                                >
+                                    {tam}
+                                </Button>
+
+                                {form.variantes[tam] !== undefined && (
+                                    <div className="ms-3 d-flex flex-column gap-2 flex-grow-1">
+                                        <div className="d-flex gap-2 flex-wrap">
+                                            {form.variantes[tam].map((cor) => (
+                                                <span key={cor} className="cor-tag">
+                                                    {cor}
+                                                    <BsXCircleFill
+                                                        className="ms-1"
+                                                        style={{ cursor: "pointer" }}
+                                                        onClick={() => removerCor(tam, cor)}
+                                                    />
+                                                </span>
+                                            ))}
+                                        </div>
+                                        <div className="d-flex gap-2">
+                                            <Form.Control
+                                                size="sm"
+                                                placeholder="Ex: Azul Royal"
+                                                value={inputCores[tam] || ""}
+                                                onChange={(e) => setInputCores((prev) => ({ ...prev, [tam]: e.target.value }))}
+                                                onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); adicionarCor(tam); } }}
+                                                style={{ maxWidth: "200px" }}
+                                            />
+                                            <Button type="button" size="sm" variant="outline-success" onClick={() => adicionarCor(tam)}>
+                                                <BsPlusCircle className="me-1" /> Adicionar
+                                            </Button>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
                         ))}
                     </div>
                 </Form.Group>
 
-                <Form.Group className="mb-3">
-                    <Form.Label>Cores disponíveis *</Form.Label>
-                    <Form.Control
-                        name="cores"
-                        value={form.cores}
-                        onChange={handleChange}
-                        placeholder="Ex: Azul, Branco, Cinza"
-                    />
-                    <Form.Text className="text-muted">Separe as cores por vírgula.</Form.Text>
-                </Form.Group>
-
                 <Form.Group className="mb-4">
                     <Form.Label>Descrição *</Form.Label>
-                    <Form.Control
-                        as="textarea"
-                        rows={3}
-                        name="descricao"
-                        value={form.descricao}
-                        onChange={handleChange}
-                        placeholder="Descreva o produto..."
-                    />
+                    <Form.Control as="textarea" rows={3} name="descricao" value={form.descricao} onChange={handleChange} placeholder="Descreva o produto..." />
                 </Form.Group>
 
                 <Button type="submit" style={{ backgroundColor: "#003235", border: "none" }}>

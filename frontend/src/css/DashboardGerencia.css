@@ -57,6 +57,29 @@
 .Titulopainel{
     color:#ffffff
 }
+.variante-linha {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #e8f4f4;
+}
+
+.variante-tam-btn {
+    min-width: 52px;
+}
+
+.cor-tag {
+    display: inline-flex;
+    align-items: center;
+    background-color: #e8f4f4;
+    color: #003235;
+    border: 1px solid #c0dada;
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
 .admin-topbar {
     background-color: #b48c09;  
     color: #ffffff;

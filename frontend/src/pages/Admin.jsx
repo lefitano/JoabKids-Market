@@ -13,6 +13,7 @@ import FormNovoProduto from "../components/FormNovoProduto";
 import GerenciarDestaques from "../components/GerenciarDestaques";
 import ListarProdutos from "../components/ListarProdutos";
 import RemoverProduto from "../components/RemoverProduto";
+import EditarProduto from "../components/EditarProduto";
 
 export default function Admin() {
   const [autenticado, setAutenticado] = useState(false);
@@ -101,7 +102,7 @@ if(autenticado){
     </Navbar>
     <div>
       {abaAtiva === 'novo' && <FormNovoProduto />}
-      {abaAtiva === 'editar' && <div className="painel-conteudo">Lista para editar produtos</div>}
+      {abaAtiva === 'editar' && <EditarProduto />}
       {abaAtiva === 'remover' && <RemoverProduto/>}
       {abaAtiva === 'alterardestaque' && <GerenciarDestaques/>}
       {abaAtiva === 'listarprodutos' && <ListarProdutos/>}

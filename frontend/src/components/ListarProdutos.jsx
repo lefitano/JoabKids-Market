@@ -25,7 +25,7 @@ export default function ListarProdutos() {
                             <td>{produto.nome}</td>
                             <td>{produto.categoria}</td>
                             <td>R$ {produto.preco.toFixed(2)}</td>
-                            <td>{produto.tamanhos.join(", ")}</td>
+                            <td>{Object.keys(produto.variantes).join(",")}</td>
                         </tr>
                     ))}
                 </tbody>

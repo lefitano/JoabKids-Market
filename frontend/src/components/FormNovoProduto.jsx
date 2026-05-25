@@ -22,7 +22,7 @@ const estadoInicial = {
 };
 
 export default function FormNovoProduto() {
-    const { produtos, adicionarProduto } = useProduto();
+    const { adicionarProduto } = useProduto();
     const [form, setForm] = useState(estadoInicial);
     const [inputCores, setInputCores] = useState({});
     const [sucesso, setSucesso] = useState(false);
@@ -71,7 +71,7 @@ export default function FormNovoProduto() {
         }));
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         setErro("");
 
@@ -90,7 +90,6 @@ export default function FormNovoProduto() {
         }
 
         const novoProduto = {
-            id: produtos.length + 1,
             referencia: form.referencia.trim(),
             nome: form.nome.trim(),
             preco: parseFloat(form.preco),
@@ -101,11 +100,15 @@ export default function FormNovoProduto() {
             destaque: false,
         };
 
-        adicionarProduto(novoProduto);
-        setForm(estadoInicial);
-        setInputCores({});
-        setSucesso(true);
-        setTimeout(() => setSucesso(false), 3000);
+        try {
+            await adicionarProduto(novoProduto);
+            setForm(estadoInicial);
+            setInputCores({});
+            setSucesso(true);
+            setTimeout(() => setSucesso(false), 3000);
+        } catch {
+            setErro("Erro ao salvar o produto. Tente novamente.");
+        }
     }
 
     return (

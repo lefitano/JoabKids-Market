@@ -3,7 +3,7 @@ import admin from "firebase-admin";
 const COLECAO = "produtos";
 
 export async function listarTodos() {
-  const snapshot = await admin.firestore().collection(COLECAO).get();
+  const snapshot = await admin.firestore().collection(COLECAO).orderBy("nome").get();
   return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 }
 

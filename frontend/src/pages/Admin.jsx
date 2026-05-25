@@ -7,6 +7,8 @@ import Badge from 'react-bootstrap/Badge';
 
 import {BsListCheck, BsStar, BsArrowRight, BsPersonCircle, BsClipboardData, BsPlusCircleFill, BsPencilSquare, BsTrash } from "react-icons/bs";
 import { useState } from "react";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { auth } from "../services/firebase";
 import "../css/Login.css";
 import "../css/DashboardGerencia.css";
 import FormNovoProduto from "../components/FormNovoProduto";
@@ -20,6 +22,7 @@ export default function Admin() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
+  const [carregando, setCarregando] = useState(false);
   const [abaAtiva, setAbaAtiva] = useState("novo");
 
   const handleLogin = async (e) => {
@@ -29,11 +32,22 @@ export default function Admin() {
       setErro("Preencha todos os campos!");
       return;
     }
-    if (email === "admin@joabkids.com" && senha === "jadmin1990") {
+    setCarregando(true);
+    try {
+      await signInWithEmailAndPassword(auth, email, senha);
       setAutenticado(true);
-    } else {
-      setErro("Email ou senha do admin incorretos!");
+    } catch {
+      setErro("Email ou senha incorretos!");
+    } finally {
+      setCarregando(false);
     }
+  };
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    setAutenticado(false);
+    setEmail("");
+    setSenha("");
   };
   if(!autenticado){
   return (
@@ -51,8 +65,8 @@ export default function Admin() {
             <Form.Label>Digite a senha administrativa:</Form.Label>
             <Form.Control type="password" onChange={(e) => setSenha(e.target.value)} placeholder="Senha" />
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Entrar <BsArrowRight  className="mb-1"/>
+          <Button variant="primary" type="submit" disabled={carregando}>
+            {carregando ? "Entrando..." : (<>Entrar <BsArrowRight className="mb-1"/></>)}
           </Button>
         </Form>
       </div>
@@ -95,6 +109,9 @@ if(autenticado){
             <Button size="sm" className="botoes-nav" onClick={() => setAbaAtiva('listarprodutos')}
             variant={abaAtiva === 'listarprodutos' ? 'light' : 'outline-light'}>
               <BsListCheck className="me-2"/>Listar produtos
+            </Button>
+            <Button size="sm" variant="outline-danger" className="botoes-nav ms-3" onClick={handleLogout}>
+              Sair
             </Button>
           </Nav>
         </Navbar.Collapse>

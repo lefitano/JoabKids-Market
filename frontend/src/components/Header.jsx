@@ -29,7 +29,7 @@ export default function Header() {
                             <Badge bg="warning" text="dark" className="ms-1">{itens.length}</Badge>
                         )}
                     </Button>
-                    <hr classname="linhaespacamentoheader"/>
+                    <hr className="linhaespacamentoheader"/>
                 </Nav>
             </Container>
         </Navbar>

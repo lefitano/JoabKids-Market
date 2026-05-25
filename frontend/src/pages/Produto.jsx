@@ -146,7 +146,7 @@ export default function Produto() {
                                 </Col>
                                 <Col xs={12} sm={4}>
                                     <p className="espec-label">Tamanhos disponíveis:</p>
-                                    <p className="espec-valor">{produto.tamanhos.join(", ")}</p>
+                                    <p className="espec-valor">{Object.keys(produto.variantes).join(", ")}</p>
                                 </Col>
                                 <Col xs={12} sm={4}>
                                     <p className="espec-label">Descrição:</p>

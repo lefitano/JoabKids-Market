@@ -24,10 +24,10 @@ export async function buscarProdutoPorId(req, res, next) {
 
 export async function criarProduto(req, res, next) {
   try {
-    const { nome, preco, categoria, imagem } = req.body;
-    if (!nome || preco == null || !categoria || !imagem) {
+    const { referencia, nome, preco, categoria, imagem, variantes, descricao } = req.body;
+    if (!referencia || !nome || preco == null || !categoria || !imagem || !variantes || !descricao) {
       return res.status(400).json({
-        error: "Campos obrigatorios: nome, preco, categoria, imagem",
+        error: "Campos obrigatorios: referencia, nome, preco, categoria, imagem, variantes, descricao",
       });
     }
     const novoProduto = await produtosService.criar(req.body);

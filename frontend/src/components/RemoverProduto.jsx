@@ -8,14 +8,20 @@ import Modal from "react-bootstrap/Modal";
 export default function RemoverProduto() {
     const { produtos, removerProduto } = useProduto();
     const [produtoSelecionado, setProdutoSelecionado] = useState(null);
+    const [erro, setErro] = useState("");
 
     function abrirConfirmacao(produto) {
+        setErro("");
         setProdutoSelecionado(produto);
     }
 
-    function confirmarRemocao() {
-        removerProduto(produtoSelecionado.id);
-        setProdutoSelecionado(null);
+    async function confirmarRemocao() {
+        try {
+            await removerProduto(produtoSelecionado.id);
+            setProdutoSelecionado(null);
+        } catch {
+            setErro("Erro ao remover o produto. Tente novamente.");
+        }
     }
 
     return (
@@ -62,6 +68,7 @@ export default function RemoverProduto() {
                 </Modal.Header>
                 <Modal.Body>
                     Tem certeza que deseja remover <strong>{produtoSelecionado?.nome}</strong>? Essa ação não pode ser desfeita.
+                    {erro && <p className="text-danger mt-2 mb-0">{erro}</p>}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => setProdutoSelecionado(null)}>

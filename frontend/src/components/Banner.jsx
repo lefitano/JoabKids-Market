@@ -8,8 +8,19 @@ import { useProduto } from '../context/ProdutoContext';
 import '../css/Banner.css';
 
 export default function Banner() {
-    const { produtos } = useProduto();
+    const { produtos, carregando } = useProduto();
     const destaques = produtos.filter(p => p.destaque);
+
+    if (carregando) {
+        return (
+            <div className="carrossel-container d-flex align-items-center justify-content-center" style={{ minHeight: 320 }}>
+                <div className="text-center text-muted">
+                    <div className="spinner-border mb-3" style={{ color: "#003235" }} role="status" />
+                    <p>Carregando produtos...</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <>

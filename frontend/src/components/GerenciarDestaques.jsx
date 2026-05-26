@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useProduto } from "../context/ProdutoContext";
 import { BsStarFill, BsStar } from "react-icons/bs";
 import Button from "react-bootstrap/Button";
@@ -7,6 +8,7 @@ const MAX_DESTAQUES = 6;
 
 export default function GerenciarDestaques() {
     const { produtos, toggleDestaque } = useProduto();
+    const [erro, setErro] = useState("");
     const totalDestaques = produtos.filter(p => p.destaque).length;
 
     return (
@@ -20,6 +22,7 @@ export default function GerenciarDestaques() {
                     Limite de {MAX_DESTAQUES} destaques atingido. Remova um antes de adicionar outro.
                 </Alert>
             )}
+            {erro && <Alert variant="danger">{erro}</Alert>}
 
             <div className="d-flex flex-column gap-3">
                 {produtos.map((produto) => (
@@ -42,7 +45,14 @@ export default function GerenciarDestaques() {
                         <Button
                             variant={produto.destaque ? "warning" : "outline-secondary"}
                             size="sm"
-                            onClick={() => toggleDestaque(produto.id)}
+                            onClick={async () => {
+                                try {
+                                    await toggleDestaque(produto.id);
+                                    setErro("");
+                                } catch {
+                                    setErro("Erro ao atualizar destaque. Tente novamente.");
+                                }
+                            }}
                             disabled={!produto.destaque && totalDestaques >= MAX_DESTAQUES}
                         >
                             {produto.destaque

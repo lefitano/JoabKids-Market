@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Badge from 'react-bootstrap/Badge';
-import { BsCart3, BsHouseDoor, BsGrid, BsPersonPlus, BsBoxArrowInRight } from "react-icons/bs";
+import { BsCart3, BsHouseDoor, BsGrid } from "react-icons/bs";
 import Button from 'react-bootstrap/Button';
 import tag from '../assets/JoabKidsTag.jpeg';
 import { useCarrinho } from '../context/CarrinhoContext.jsx';

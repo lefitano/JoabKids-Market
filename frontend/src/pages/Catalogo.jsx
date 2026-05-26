@@ -12,7 +12,7 @@ import { useProduto } from '../context/ProdutoContext.jsx';
 
 export default function Catalogo() {
     
-    const {produtos} = useProduto()
+    const { produtos, carregando } = useProduto();
     const [filtro, setFiltro] = useState("Todos");
 
     const produtosFiltrados = filtro === "Todos"
@@ -41,9 +41,20 @@ export default function Catalogo() {
                     </ButtonGroup>
                 </div>
                 <Row className="g-4">
-                    {produtosFiltrados.map(produto => (
-                        <ProductCard key={produto.id} produto={produto} />
-                    ))}
+                    {carregando ? (
+                        <div className="text-center py-5 text-muted">
+                            <div className="spinner-border mb-3" style={{ color: "#003235" }} role="status" />
+                            <p>Carregando produtos...</p>
+                        </div>
+                    ) : produtosFiltrados.length === 0 ? (
+                        <div className="text-center py-5 text-muted">
+                            <p>Nenhum produto encontrado.</p>
+                        </div>
+                    ) : (
+                        produtosFiltrados.map(produto => (
+                            <ProductCard key={produto.id} produto={produto} />
+                        ))
+                    )}
                 </Row>
 
             </Container>

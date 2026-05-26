@@ -43,7 +43,7 @@ export default function EditarProduto() {
         setForm((prev) => ({ ...prev, [name]: value }));
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         setErro("");
 
@@ -64,9 +64,13 @@ export default function EditarProduto() {
             descricao: form.descricao.trim(),
         };
 
-        editarProduto(produtoSelecionado.id, produtoEditado);
-        setSucesso(true);
-        setTimeout(() => setSucesso(false), 3000);
+        try {
+            await editarProduto(produtoSelecionado.id, produtoEditado);
+            setSucesso(true);
+            setTimeout(() => setSucesso(false), 3000);
+        } catch {
+            setErro("Erro ao salvar as alterações. Tente novamente.");
+        }
     }
 
     if (!produtoSelecionado) {

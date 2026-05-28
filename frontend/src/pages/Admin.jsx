@@ -6,8 +6,8 @@ import Container from 'react-bootstrap/Container';
 import Badge from 'react-bootstrap/Badge';
 
 import {BsListCheck, BsStar, BsArrowRight, BsPersonCircle, BsClipboardData, BsPlusCircleFill, BsPencilSquare, BsTrash } from "react-icons/bs";
-import { useState } from "react";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { useState, useEffect } from "react";
+import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../services/firebase";
 import "../css/Login.css";
 import "../css/DashboardGerencia.css";
@@ -18,12 +18,19 @@ import RemoverProduto from "../components/RemoverProduto";
 import FormEditarProduto from "../components/FormEditarProduto";
 
 export default function Admin() {
-  const [autenticado, setAutenticado] = useState(false);
+  const [autenticado, setAutenticado] = useState(null);
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
   const [carregando, setCarregando] = useState(false);
   const [abaAtiva, setAbaAtiva] = useState("novo");
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setAutenticado(!!user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -49,6 +56,14 @@ export default function Admin() {
     setEmail("");
     setSenha("");
   };
+  if(autenticado === null){
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "60vh" }}>
+        <div className="spinner-border" style={{ color: "#003235" }} role="status" />
+      </div>
+    );
+  }
+
   if(!autenticado){
   return (
     <div className="FormLogin">

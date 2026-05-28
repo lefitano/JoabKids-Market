@@ -1,17 +1,28 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Badge from 'react-bootstrap/Badge';
-import { BsCart3, BsHouseDoor, BsGrid } from "react-icons/bs";
+import { BsCart3, BsHouseDoor, BsGrid, BsClipboardData } from "react-icons/bs";
 import Button from 'react-bootstrap/Button';
 import tag from '../assets/JoabKidsTag.jpeg';
 import { useCarrinho } from '../context/CarrinhoContext.jsx';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../services/firebase';
 import '../css/Nav.css';
 
 export default function Header() {
     const { itens } = useCarrinho();
     const { pathname } = useLocation();
+    const [adminLogado, setAdminLogado] = useState(false);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setAdminLogado(!!user);
+        });
+        return () => unsubscribe();
+    }, []);
 
     return (
         <Navbar variant="dark" className="justify-content-center" sticky='top' style={{ backgroundColor: "#003235" }}>
@@ -29,10 +40,14 @@ export default function Header() {
                             <Badge bg="warning" text="dark" className="ms-1">{itens.length}</Badge>
                         )}
                     </Button>
+                    {adminLogado && (
+                        <Button variant="warning" as={Link} to="/admin" className="ms-2 fw-bold">
+                            <BsClipboardData className="me-1" />Painel Admin
+                        </Button>
+                    )}
                     <hr className="linhaespacamentoheader"/>
                 </Nav>
             </Container>
         </Navbar>
-
     );
 }

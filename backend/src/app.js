@@ -9,7 +9,15 @@ const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 
 const app = express();
 
-app.use(cors({ origin: FRONTEND_URL }));
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || origin === FRONTEND_URL || origin.endsWith(".railway.app")) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed"));
+    }
+  }
+}));
 app.use(express.json());
 
 app.get("/", (req, res) => {

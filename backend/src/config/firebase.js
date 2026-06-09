@@ -6,8 +6,8 @@ import { readFileSync, existsSync } from "fs";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 function loadCredentials() {
-  if (process.env.FIREBASE_CREDENTIALS_JSON) {
-    return JSON.parse(process.env.FIREBASE_CREDENTIALS_JSON);
+  if (process.env.FIREBASE_CREDENTIALS_BASE64) {
+    return JSON.parse(Buffer.from(process.env.FIREBASE_CREDENTIALS_BASE64, "base64").toString());
   }
   const credentialsPath = resolve(__dirname, "../../serviceAccountKey.json");
   if (existsSync(credentialsPath)) {

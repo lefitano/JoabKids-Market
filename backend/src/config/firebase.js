@@ -5,25 +5,27 @@ import { readFileSync, existsSync } from "fs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const credentialsPath = resolve(
-  __dirname,
-  "../../",
-  process.env.FIREBASE_CREDENTIALS || "serviceAccountKey.json"
-);
+function loadCredentials() {
+  if (process.env.FIREBASE_CREDENTIALS_JSON) {
+    return JSON.parse(process.env.FIREBASE_CREDENTIALS_JSON);
+  }
+  const credentialsPath = resolve(__dirname, "../../serviceAccountKey.json");
+  if (existsSync(credentialsPath)) {
+    return JSON.parse(readFileSync(credentialsPath));
+  }
+  return null;
+}
 
-if (existsSync(credentialsPath)) {
-  const serviceAccount = JSON.parse(readFileSync(credentialsPath));
+const serviceAccount = loadCredentials();
 
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-  });
-
-  console.log("Firebase conectado.");
-} else {
-  console.warn(
-    `Credenciais do Firebase nao encontradas em ${credentialsPath}. Pulando inicializacao.`
+if (!serviceAccount) {
+  throw new Error(
+    "Credenciais do Firebase não encontradas. Configure FIREBASE_CREDENTIALS_JSON ou forneça serviceAccountKey.json."
   );
 }
 
-export const db = admin.apps.length ? admin.firestore() : null;
+admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
+console.log("Firebase conectado.");
+
+export const db = admin.firestore();
 export default admin;

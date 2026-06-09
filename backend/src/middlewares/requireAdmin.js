@@ -5,7 +5,7 @@ export default function requireAdmin(req, res, next) {
     return res.status(500).json({ error: "ADMIN_EMAIL não configurado no servidor" });
   }
   if (req.user?.email !== ADMIN_EMAIL) {
-    return res.status(403).json({ error: "Acesso negado. Permissão de administrador necessária." });
+    return res.status(403).json({ error: "Acesso negado.", received: req.user?.email, expected: ADMIN_EMAIL });
   }
   next();
 }

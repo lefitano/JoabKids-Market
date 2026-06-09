@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCarrinho } from '../context/CarrinhoContext.jsx';
 import '../css/Carrinho.css';
 
-const WHATSAPP_NUMERO = "5585994031237";
+const WHATSAPP_NUMERO = import.meta.env.VITE_WHATSAPP_NUMERO;
 
 function gerarMensagem(itens, endereco) {
     const lista = itens.map((item, i) =>

@@ -17,6 +17,8 @@ import ListarProdutos from "../components/ListarProdutos";
 import RemoverProduto from "../components/RemoverProduto";
 import FormEditarProduto from "../components/FormEditarProduto";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 export default function Admin() {
   const [autenticado, setAutenticado] = useState(null);
   const [email, setEmail] = useState("");
@@ -26,8 +28,27 @@ export default function Admin() {
   const [abaAtiva, setAbaAtiva] = useState("novo");
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setAutenticado(!!user);
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        setAutenticado(false);
+        return;
+      }
+      try {
+        const token = await user.getIdToken();
+        const res = await fetch(`${API_URL}/api/admin/verify`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (res.ok) {
+          setAutenticado(true);
+        } else {
+          await signOut(auth);
+          setAutenticado(false);
+          setErro("Acesso negado. Usuário não é administrador.");
+        }
+      } catch {
+        await signOut(auth);
+        setAutenticado(false);
+      }
     });
     return () => unsubscribe();
   }, []);
@@ -42,10 +63,9 @@ export default function Admin() {
     setCarregando(true);
     try {
       await signInWithEmailAndPassword(auth, email, senha);
-      setAutenticado(true);
+      // onAuthStateChanged cuida da verificação de admin
     } catch {
       setErro("Email ou senha incorretos!");
-    } finally {
       setCarregando(false);
     }
   };

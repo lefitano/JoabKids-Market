@@ -1,5 +1,6 @@
 import { Router } from "express";
 import auth from "../middlewares/auth.js";
+import requireAdmin from "../middlewares/requireAdmin.js";
 import {
   listarProdutos,
   buscarProdutoPorId,
@@ -12,8 +13,8 @@ const router = Router();
 
 router.get("/", listarProdutos);
 router.get("/:id", buscarProdutoPorId);
-router.post("/", auth, criarProduto);
-router.put("/:id", auth, atualizarProduto);
-router.delete("/:id", auth, deletarProduto);
+router.post("/", auth, requireAdmin, criarProduto);
+router.put("/:id", auth, requireAdmin, atualizarProduto);
+router.delete("/:id", auth, requireAdmin, deletarProduto);
 
 export default router;
